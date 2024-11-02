@@ -124,10 +124,26 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
     _currMonth = widget.initialDate?.month ?? DateTime.now().month;
     _currDay = widget.initialDate?.day ?? DateTime.now().day;
 
-    // Cập nhật giá trị của cuộn
-    _yearScrollCtrl?.jumpToItem(_currYear - _yearRange!.first);
-    _monthScrollCtrl?.jumpToItem(_currMonth - _monthRange!.first);
-    _dayScrollCtrl?.jumpToItem(_currDay - _dayRange!.first);
+    // Cuộn đến năm với animation
+    _yearScrollCtrl?.animateToItem(
+      _currYear! - _yearRange!.first,
+      duration: Duration(milliseconds: 300), // Thời gian cuộn
+      curve: Curves.easeInOut, // Kiểu animation
+    );
+
+    // Cuộn đến tháng với animation
+    _monthScrollCtrl?.animateToItem(
+      _currMonth! - _monthRange!.first,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+
+    // Cuộn đến ngày với animation
+    _dayScrollCtrl?.animateToItem(
+      _currDay! - _dayRange!.first,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
   }
 
   @override
