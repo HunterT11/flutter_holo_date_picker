@@ -92,6 +92,9 @@ class DatePicker {
       case 'pl':
         return DateTimePickerLocale.pl;
 
+      case 'vi':
+        return DateTimePickerLocale.vi;
+
       default:
         return DateTimePickerLocale.en_us;
     }

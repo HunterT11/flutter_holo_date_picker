@@ -54,6 +54,8 @@ part 'strings_pl.dart';
 
 part 'strings_sr.dart';
 
+part 'strings_vi.dart';
+
 abstract class _StringsI18n {
   const _StringsI18n();
 
@@ -154,6 +156,9 @@ enum DateTimePickerLocale {
 
   /// Serbian (SR)
   sr,
+
+  /// Vietnam (VI)
+  vi,
 }
 
 /// Default value of date locale
@@ -188,6 +193,7 @@ const Map<DateTimePickerLocale, _StringsI18n> datePickerI18n = {
   DateTimePickerLocale.cz: const _StringsCz(),
   DateTimePickerLocale.pl: const _StringsPl(),
   DateTimePickerLocale.sr: const _StringsSr(),
+  DateTimePickerLocale.vi: const _StringsVi(),
 };
 
 class DatePickerI18n {
