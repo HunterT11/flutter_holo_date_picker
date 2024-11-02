@@ -104,6 +104,33 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _updateScrollControllers();
+  }
+
+  @override
+  void didUpdateWidget(DatePickerWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Kiểm tra xem initialDate có thay đổi hay không
+    if (widget.initialDate != oldWidget.initialDate) {
+      _updateScrollControllers();
+    }
+  }
+
+  // Phương thức cuộn đến năm, tháng, và ngày mới
+  void _updateScrollControllers() {
+    _currYear = widget.initialDate?.year ?? DateTime.now().year;
+    _currMonth = widget.initialDate?.month ?? DateTime.now().month;
+    _currDay = widget.initialDate?.day ?? DateTime.now().day;
+
+    // Cập nhật giá trị của cuộn
+    _yearScrollCtrl?.jumpToItem(_currYear - _yearRange!.first);
+    _monthScrollCtrl?.jumpToItem(_currMonth - _monthRange!.first);
+    _dayScrollCtrl?.jumpToItem(_currDay - _dayRange!.first);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       //padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
